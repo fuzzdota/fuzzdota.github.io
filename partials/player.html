@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html ng-app>
+<head>
+	<script type="text/javascript" src="../../app/lib/angular/angular.js"></script>
+	<title>Sam</title>
+</head>
+<body class="card_container" ng-cloak>
+	<div class="well" ng-controller="PlayerCtrl">
+		<div class="row">
+			<div class="col-md-3">
+				<a href="#">
+					<img ng-src="{{user.avatarfull}}"/>
+				</a>
+			</div>
+			<div class="col-md-9">
+				<div class="panel panel-info">
+					  <div class="panel-heading">
+					    <b> {{user.personaname}} </b> 
+					    <a ng-href="{{user.profileurl}}"><span class="badge">SteamID: {{user.steamid}}</span></a>
+					  </div>
+					  <div class="panel-body">
+					    <b ng-show="angular.isDefined(user.realname)">Real Name: </b>{{user.realname}} 
+					    <b ng-show="angular.isDefined(user.loccityid)">City: </b>{{user.loccityid}} 
+					    <b ng-show="angular.isDefined(user.locstatecode)">State: </b>{{user.locstatecode}} 
+					    <b ng-show="angular.isDefined(user.loccountrycode)">Country: </b>{{user.loccountrycode}}
+					    <b ng-show="user.ingame">In game: </b>{{user.ingame}} <span class="label label-success">{{user.gameserverip}}</span>
+					  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

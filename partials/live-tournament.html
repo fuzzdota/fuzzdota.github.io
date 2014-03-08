@@ -1,0 +1,75 @@
+<div ng-controller="LiveTournamentCtrl">
+	<ul class="pagination">
+		<li><a href="#">&laquo;</a></li>
+		<li ng-repeat="game in games | orderBy:'spectators':!reverse"><a href="" ng-click="goTo({{$index+1}})">{{$index+1}}</a></li>
+		<li><a href="#">&raquo;</a></li>
+	</ul>	
+	<div class="panel panel-default" id="{{$index+1}}" ng-repeat="game in games | orderBy:'spectators':!reverse">
+		<div class="panel-heading">
+			<div class="row" ng-repeat="item in items| filter:{defindex:findLeagueIndex(game.league_id)} | limitTo:1">
+				<div class="col-md-2 col-xs-6 text-center">
+					<img ng-src="{{item.image_url}}" onerror="this.src='http://d2connect.com/images/hero_null.png'" class="img-thumbnail img-responsive">
+				</div>
+				<div class="col-md-10 col-xs-6">
+					<ul class="list-unstyled">
+					  <li><span class="badge pull-right">Spectators: {{game.spectators}}</span></li>
+					  <li><h2>{{item.name}}</h2></li>
+					  <li>{{item.item_description}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-5 text-right">
+					{{game.radiant_team.team_name}}({{game.radiant_team.team_id}})</br>Logo:{{game.radiant_team.team_logo}}
+					<table class="table table-condensed">
+						<tr ng-class-odd="'success'" ng-class-even="'active'" ng-repeat="player in game.players | filter:{team:0}">
+							<td ng-repeat="hero in heroes | filter:{id:player.hero_id}:true | limitTo:1"> 
+								<b>{{player.name}}</b> <img ng-src="{{hero.thumbnail}}" onerror="this.src='http://d2connect.com/images/hero.png'" style="height:35px;"></img> 
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-md-2 text-center">
+					<!-- Empty -->
+				</div>
+				<div class="col-md-5 text-left">
+					{{game.dire_team.team_name}}({{game.dire_team.team_id}})</br>Logo:{{game.dire_team.team_logo}}
+					<table class="table table-condensed">
+						<tr ng-class-odd="'danger'" ng-class-even="'active'" ng-repeat="player in game.players | filter:{team:1}">
+							<td ng-repeat="hero in heroes | filter:{id:player.hero_id}:true | limitTo:1"> 
+								<img ng-src="{{hero.thumbnail}}" onerror="this.src='http://d2connect.com/images/hero.png'" style="height:35px;"></img> <b>{{player.name}}</b> 
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5 col-xs-6 text-right">
+					<ul class="list-inline ">
+						<li id="center-inline"><span class="label label-danger" id="center-text2">Throne</span></li>
+						<li id="center-inline"><span class="{{getTowerStateColor(11,game.tower_state)}}">Ancient top</span><br><span class="{{getTowerStateColor(12,game.tower_state)}}">Ancient bot</span></li>
+						<li id="center-inline"><span class="{{getTowerStateColor(19,game.tower_state)}}">Tier 3</span> <span class="{{getTowerStateColor(20,game.tower_state)}}">Tier 2</span> <span class="{{getTowerStateColor(21,game.tower_state)}}">Tier 1</span><br><span class="{{getTowerStateColor(16,game.tower_state)}}">Tier 3</span> <span class="{{getTowerStateColor(17,game.tower_state)}}">Tier 2</span> <span class="{{getTowerStateColor(18,game.tower_state)}}">Tier 1</span><br><span class="{{getTowerStateColor(13,game.tower_state)}}">Tier 3</span> <span class="{{getTowerStateColor(14,game.tower_state)}}">Tier 2</span> <span class="{{getTowerStateColor(15,game.tower_state)}}">Tier 1</span></li>
+					</ul>
+				</div>
+				<div class="col-md-2 col-xs-0 text-center">
+					<!-- Empty Space -->
+				</div>	
+				<div class="col-md-5 col-xs-6 text-left">
+					<ul class="list-inline">
+						<li id="center-inline"><span class="{{getTowerStateColor(10,game.tower_state)}}">Tier 1</span> <span class="{{getTowerStateColor(9,game.tower_state)}}">Tier 2</span> <span class="{{getTowerStateColor(8,game.tower_state)}}">Tier 3</span><br><span class="{{getTowerStateColor(7,game.tower_state)}}">Tier 1</span> <span class="{{getTowerStateColor(6,game.tower_state)}}">Tier 2</span> <span class="{{getTowerStateColor(5,game.tower_state)}}">Tier 3</span><br><span class="{{getTowerStateColor(4,game.tower_state)}}">Tier 1</span> <span class="{{getTowerStateColor(3,game.tower_state)}}">Tier 2</span> <span class="{{getTowerStateColor(2,game.tower_state)}}">Tier 3</span></li>
+						<li id="center-inline"><span class="{{getTowerStateColor(0,game.tower_state)}}">Ancient top</span><br><span class="{{getTowerStateColor(1,game.tower_state)}}">Ancient bot</span></li>
+						<li id="center-inline"><span class="label label-danger">Throne</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style type="text/css">
+#center-inline {
+	vertical-align: middle;
+}
+</style>

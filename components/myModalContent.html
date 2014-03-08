@@ -1,0 +1,62 @@
+<style>
+div #left_panel {
+	vertical-align: middle;
+	display: inline-block;
+	margin: auto;
+}
+
+div #divider {
+	margin: 30px;
+	display:inline-block;
+	width: 1px;
+	height: auto;
+	background-color: #000000;
+}
+
+div #right_panel {
+	vertical-align: middle;;
+	display:inline-block;
+	margin: 20px;
+}
+
+div #bottom_panel {
+	display:block;
+}
+
+</style>
+
+<div class="modal-header">
+	<h3>Welcome to Dota 2 Central</h3>
+</div>
+<div class="modal-body">
+	<div id="left_panel">
+		<h4>Login</h4> </br>
+		<ul style="list-style: none;">
+			<li>
+				<input type="text" placeholder="Enter your username"/>
+			</li>
+			<li>
+				<input type="password" placeholder="Enter your password"/>
+			</li>
+		</ul>
+		<input type="checkbox"> Remember Me</<input> | <a ng-href="">Forgot Password?</a>
+	</div>
+
+	<div id="divider"/>
+
+	<div id="right_panel">
+		<ul style="list-style: none;">
+
+			<li ng-repeat="item in items">
+				<a ng-click="selected.item = item">{{ item }}</a>
+			</li>
+		</ul>
+		Selected: <b>{{ selected.item }}</b>
+	</div>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary">Sign In</button>
+	<button class="btn btn-secondary" ng-click="ok()">OK</button>
+	<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

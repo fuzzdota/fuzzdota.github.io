@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+	<script src="../app/lib/angular/angular.js"></script>
+	<script src="../app/lib/angular/angular-resource.js"></script>
+	<script src="test.js"></script>
+	<title>Sam</title>
+</head>
+<body class="card_container">
+
+<div class="card_main" ng-controller="TestAPICtrl">
+	
+	<h1 class="header">{{titlez}}</h1>
+	<div class="content">
+		<img ng-src="{{profilePic}}">
+		<p>{{resultz}}</p>
+		<pre>{{resultzz | json}}</pre>
+	</div>
+</div>
+<div class="card_shadow"></div>
+
+<!-- specific css for this file-->
+<style type="text/css">
+
+.card_container {
+	background-color:#EEEEEE; 
+	margin: auto;
+	display: inline-block;
+	border:dashed;
+}
+
+.card_main {
+	background-color: #FFFFFF;
+
+	border:solid;
+	border-width: 1px;
+	border-color: #DCDCDC;
+
+	padding: 10px;
+	border-radius: 5px;
+	max-width: 800px;
+	margin: auto;
+}
+
+.card_shadow {
+	position: relative;
+	z-index: -1;
+	top: -5px;
+	background-color: #DCDCDC;
+	padding: 4px 10px 4px 10px;
+	border-radius: 0px 0px 5px 5px;
+	max-width: 800px;
+	margin: auto;
+}
+
+.content {
+	border:dashed;
+	border-color: #AAAAAA;
+	word-wrap:break-word;
+
+}
+
+</style>
+</body>
+</html>

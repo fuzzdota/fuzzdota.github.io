@@ -1,0 +1,83 @@
+	<div class="row top-buffer">
+			<div class="col-md-6 text-center">
+				{{game.radiant_team.team_name}}({{game.radiant_team.team_id}})</br>Logo:{{game.radiant_team.team_logo}}
+			</div>
+			<div class="col-md-6 text-center">
+				{{game.dire_team.team_name}}({{game.dire_team.team_id}})</br>Logo:{{game.dire_team.team_logo}}
+			</div>
+		</div>
+		<div class="row top-buffer">
+			<div class="col-md-5 text-left">
+				<div class="row top-buffer" ng-repeat="player in game.players | filter:{team:0}">
+					<div ng-repeat="hero in heroes | filter:{id:player.hero_id}:true | limitTo:1"> 
+						<img ng-src="{{hero.thumbnail}}" onerror="this.src='http://d2connect.com/images/hero.png'" style="height:35px;"></img> {{player.name}} -- {{player.account_id}}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2 text-center">
+				leagueId:{{game.league_id}} </br>
+				lobbyId:{{game.lobby_id}} </br>
+				spectator:{{game.spectators}} </br>
+			</div>
+			<div class="col-md-5 text-right">
+				<div class="row top-buffer" ng-repeat="player in game.players | filter:{team:1}">
+					<div ng-repeat="hero in heroes | filter:{id:player.hero_id}:true  | limitTo:1"> 
+						{{player.name}} <img ng-src="{{hero.thumbnail}}" onerror="this.src='http://d2connect.com/images/hero.png'" style="height:35px;"></img>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row top-buffer">
+			<div class="col-md-1 text-left" id="center-text">
+				<span class="label label-danger" id="center-text2">Throne</span>
+			</div>
+			<div class="col-md-1 text-left">
+				<div class="row">
+					<span class="{{getTowerStateColor(11,game.tower_state)}}">Ancient top</span>
+				</div>
+				<div class="row">
+					<span class="{{getTowerStateColor(12,game.tower_state)}}">Ancient bot</span>
+				</div>
+			</div>
+			<div class="col-md-3 text-left">				
+				<span class="{{getTowerStateColor(19,game.tower_state)}}">Tier 3</span>
+				<span class="{{getTowerStateColor(20,game.tower_state)}}">Tier 2</span>
+				<span class="{{getTowerStateColor(21,game.tower_state)}}">Tier 1</span>
+				<br>
+				<span class="{{getTowerStateColor(16,game.tower_state)}}">Tier 3</span>
+				<span class="{{getTowerStateColor(17,game.tower_state)}}">Tier 2</span>
+				<span class="{{getTowerStateColor(18,game.tower_state)}}">Tier 1</span>
+				<br>
+				<span class="{{getTowerStateColor(13,game.tower_state)}}">Tier 3</span>
+				<span class="{{getTowerStateColor(14,game.tower_state)}}">Tier 2</span>
+				<span class="{{getTowerStateColor(15,game.tower_state)}}">Tier 1</span>		
+			</div>
+			<div class="col-md-2 text-center">
+				<!-- Empty Space -->
+			</div>	
+			<div class="col-md-3 text-right">
+				<span class="{{getTowerStateColor(10,game.tower_state)}}">Tier 1</span>
+				<span class="{{getTowerStateColor(9,game.tower_state)}}">Tier 2</span>
+				<span class="{{getTowerStateColor(8,game.tower_state)}}">Tier 3</span>
+				<br>
+				<span class="{{getTowerStateColor(7,game.tower_state)}}">Tier 1</span>
+				<span class="{{getTowerStateColor(6,game.tower_state)}}">Tier 2</span>
+				<span class="{{getTowerStateColor(5,game.tower_state)}}">Tier 3</span>
+				<br>
+				<span class="{{getTowerStateColor(4,game.tower_state)}}">Tier 1</span>
+				<span class="{{getTowerStateColor(3,game.tower_state)}}">Tier 2</span>
+				<span class="{{getTowerStateColor(2,game.tower_state)}}">Tier 3</span>		
+			</div>			
+			<div class="col-md-1 text-right">
+				<div class="row">
+					<span class="{{getTowerStateColor(0,game.tower_state)}}">Ancient top</span>
+				</div>
+				<div class="row">
+					<span class="{{getTowerStateColor(1,game.tower_state)}}">Ancient bot</span>
+				</div>		
+			</div>
+			<div class="col-md-1 text-right" >
+				<span class="label label-danger">Throne</span>
+			</div>
+		</div>
+		
